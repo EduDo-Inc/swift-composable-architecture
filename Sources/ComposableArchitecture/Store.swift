@@ -370,8 +370,10 @@ public final class Store<State, Action> {
       self.isSending = false
       self.state.value = currentState
     }
-
+    
+    print("[TCA-debug] bufferedActions \(self.bufferedActions.count)")
     while !self.bufferedActions.isEmpty {
+      //print("[TCA-debug] bufferedActions \(self.bufferedActions.count)")
       let action = self.bufferedActions.removeFirst()
       let effect = self.reducer(&currentState, action)
 
